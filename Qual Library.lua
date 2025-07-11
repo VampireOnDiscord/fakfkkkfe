@@ -186,7 +186,7 @@ end
 --zindex stuff
 local function focusOnOption(obj)
 	if highest then
-		highest.ZIndex = highest.ZIndex - 5
+		highest.ZIndex = highest.ZIndex + 5
 		for _,v in next, highest:GetDescendants() do
 			pcall(function()
 				v.ZIndex = v.ZIndex +- 5
@@ -204,10 +204,10 @@ end
 
 local function focusOnWindow(obj)
 	if focused then
-		focused.ZIndex = focused.ZIndex - 10
+		focused.ZIndex = focused.ZIndex + 10
 		for _,v in next, focused:GetDescendants() do
 			pcall(function()
-				v.ZIndex = v.ZIndex - 10
+				v.ZIndex = v.ZIndex + 10
 			end)
 		end
 	end
@@ -1677,7 +1677,7 @@ end)
 
 UserInputService.InputChanged:connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseMovement and library.pointer then
-		library.pointer.Position = UDim2.new(0,UserInputService:GetMouseLocation().X,0,UserInputService:GetMouseLocation().Y)
+		library.pointer.Position = UDim2.new(0,UserInputService:GetMouseLocation().X,0,UserInputService:GetMouseLocation().Y-40)
 	end
 end)
 
