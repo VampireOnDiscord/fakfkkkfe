@@ -314,7 +314,9 @@ function library:CreateWindow(ctitle, csize, cpos)
 	table.insert(self.windows, window)
 	
 	self.base = self.base or self:create("ScreenGui", {
-		Parent = game.Players.LocalPlayer.PlayerGui
+		Parent = game.Players.LocalPlayer.PlayerGui,
+		ZIndexBehavior = Enum.ZIndexBehavior.Global,
+		DisplayOrder = 1000
 	})
 	
 	
