@@ -314,7 +314,9 @@ function library:CreateWindow(ctitle, csize, cpos)
 	table.insert(self.windows, window)
 	
 	self.base = self.base or self:create("ScreenGui", {
-		Parent = game.Players.LocalPlayer.PlayerGui
+		Parent = game.Players.LocalPlayer.PlayerGui,
+		ZIndexBehavior = Enum.ZIndexBehavior.Global
+		DisplayOrder = 1000
 	})
 	
 	
@@ -1678,7 +1680,7 @@ end)
 
 UserInputService.InputChanged:connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseMovement and library.pointer then
-		library.pointer.Position = UDim2.new(0,UserInputService:GetMouseLocation().X,0,UserInputService:GetMouseLocation().Y-43)
+		library.pointer.Position = UDim2.new(0,UserInputService:GetMouseLocation().X,0,UserInputService:GetMouseLocation().Y-46)
 	end
 end)
 
