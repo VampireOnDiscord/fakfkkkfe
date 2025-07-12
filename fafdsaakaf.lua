@@ -314,9 +314,7 @@ function library:CreateWindow(ctitle, csize, cpos)
 	table.insert(self.windows, window)
 	
 	self.base = self.base or self:create("ScreenGui", {
-		Parent = game.Players.LocalPlayer.PlayerGui,
-		ZIndexBehavior = Enum.ZIndexBehavior.Global
-		DisplayOrder = 1000
+		Parent = game.Players.LocalPlayer.PlayerGui
 	})
 	
 	
@@ -1408,7 +1406,6 @@ function library:CreateWindow(ctitle, csize, cpos)
 			end
 				
 			function LocalTab:AddCP(text, color3, _function, alpha)
-				alpha = tonumber(alpha) or 1
 				if color3 then
 					if typeof(color3) == "function" then
 						_function = color3
@@ -1634,8 +1631,6 @@ function library:CreateWindow(ctitle, csize, cpos)
 				end
 				
 				function color:SetAlpha(newAlpha)
-					newAlpha = tonumber(newAlpha)
-					if not newAlpha then return end
 					queue[LocalTab.title.Text..text.."alpha"] = newAlpha
 					color.alpha = newAlpha
 					color.pointer3.Position = UDim2.new(color.alpha,0,1,-10)
@@ -1680,7 +1675,7 @@ end)
 
 UserInputService.InputChanged:connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseMovement and library.pointer then
-		library.pointer.Position = UDim2.new(0,UserInputService:GetMouseLocation().X,0,UserInputService:GetMouseLocation().Y-46)
+		library.pointer.Position = UDim2.new(0,UserInputService:GetMouseLocation().X,0,UserInputService:GetMouseLocation().Y-43)
 	end
 end)
 
