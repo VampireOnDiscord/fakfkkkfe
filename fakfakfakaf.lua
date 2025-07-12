@@ -222,7 +222,7 @@ end
 
 local ddcheck
 local extframes = {}
-for i=1,4 do
+for i=1, 4 do
 	local frame = Instance.new("Frame")
 	frame.ZIndex = 50
 	frame.BackgroundTransparency = 1
@@ -314,7 +314,9 @@ function library:CreateWindow(ctitle, csize, cpos)
 	table.insert(self.windows, window)
 	
 	self.base = self.base or self:create("ScreenGui", {
-		Parent = game.Players.LocalPlayer.PlayerGui
+		Parent = game.Players.LocalPlayer.PlayerGui,
+		ZIndexBehavior = Enum.ZIndexBehavior.Global,
+		DisplayOrder = 1000
 	})
 	
 	
@@ -424,8 +426,6 @@ function library:CreateWindow(ctitle, csize, cpos)
 			end
 		end)
 	end
-	
-	
 	
 	window.shade = self:create("ImageLabel", {
 		Size = UDim2.new(1,0,0,18),
@@ -560,7 +560,6 @@ function library:CreateWindow(ctitle, csize, cpos)
 		end
 		
 		tab.button = library:create("Frame", {
-			
 			Position = UDim2.new(0,self.xpos,0,0),
 			Size = UDim2.new(0,bounds.X+8,0,19),
 			BorderColor3 = library.colors.outline,
