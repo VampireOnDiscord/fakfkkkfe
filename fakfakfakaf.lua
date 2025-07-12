@@ -222,7 +222,7 @@ end
 
 local ddcheck
 local extframes = {}
-for i=1, 4 do
+for i=1,4 do
 	local frame = Instance.new("Frame")
 	frame.ZIndex = 50
 	frame.BackgroundTransparency = 1
@@ -314,9 +314,7 @@ function library:CreateWindow(ctitle, csize, cpos)
 	table.insert(self.windows, window)
 	
 	self.base = self.base or self:create("ScreenGui", {
-		Parent = game.Players.LocalPlayer.PlayerGui,
-		ZIndexBehavior = Enum.ZIndexBehavior.Global,
-		DisplayOrder = 1000
+		Parent = game.Players.LocalPlayer.PlayerGui
 	})
 	
 	
@@ -560,6 +558,7 @@ function library:CreateWindow(ctitle, csize, cpos)
 		end
 		
 		tab.button = library:create("Frame", {
+			
 			Position = UDim2.new(0,self.xpos,0,0),
 			Size = UDim2.new(0,bounds.X+8,0,19),
 			BorderColor3 = library.colors.outline,
@@ -1407,6 +1406,7 @@ function library:CreateWindow(ctitle, csize, cpos)
 			end
 				
 			function LocalTab:AddCP(text, color3, _function, alpha)
+				alpha = tonumber(alpha) or 1
 				if color3 then
 					if typeof(color3) == "function" then
 						_function = color3
@@ -1632,6 +1632,8 @@ function library:CreateWindow(ctitle, csize, cpos)
 				end
 				
 				function color:SetAlpha(newAlpha)
+					newAlpha = tonumber(newAlpha)
+					if not newAlpha then return end
 					queue[LocalTab.title.Text..text.."alpha"] = newAlpha
 					color.alpha = newAlpha
 					color.pointer3.Position = UDim2.new(color.alpha,0,1,-10)
